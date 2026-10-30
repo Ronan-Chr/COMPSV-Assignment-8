@@ -56,28 +56,28 @@ class HashTable:
         return hash_value % self.size
 
     ''' This method inserts a new contact into the hash table. It handles collisions using linked lists. '''
-    def insert(self, key: str, value: str) -> None:
+    def insert(self, key: str, number: str) -> None:
         index = self.hash_function(key)
         current = self.data[index]
 
         '''Empty slot check and if empty create a new node with the key and value at thhe empty space.'''
         if current is None:
-            self.data[index] = Node(key, Contact(key, value))
+            self.data[index] = Node(key, Contact(key, number))
             return
 
         '''Follows the chain/map and updates names that exists'''
         while True:
             if current.key == key:
-                current.value.number = value
+                current.value.number = number
                 return
             if current.next is None:
                 break 
             current = current.next
 
-        current.next = Node(key, Contact(key, value))
+        current.next = Node(key, Contact(key, number))
 
     ''''''
-    def search(self, key: str):
+    def search(self, key: str) -> Contact | None:
         index = self.hash_function(key)
         current = self.data[index]
         while current is not None:
@@ -102,16 +102,16 @@ class HashTable:
 
 # Test your hash table implementation here.  
 ''' Make sure to test the Contact class as well. I dont know what happened but the bottom view terminal in VS wasnt displaying the output of the print statements. I ended up restarting VS and without changing anything it started working and displaying the output of the print statements. I am not sure what happened but it is working now. '''
-contact1 = Contact("Riley", "123-456-7890")
-print(contact1)  # Output: Riley: 123-456-7890
-print(contact1.name)  # Output: Riley
-print(contact1.number)  # Output: 123-456-7890
+contact_1 = Contact("Riley", "123-456-7890")
+print(contact_1)  # Output: Riley: 123-456-7890
+print(contact_1.name)  # Output: Riley
+print(contact_1.number)  # Output: 123-456-7890
 
 ''' Test the Node class prints'''
-node1 = Node("Riley", contact1)
-print(node1.key)  # Output: Riley
-print(node1.value)  # Output: Riley: 123-456-7890
-print(node1.next)  # Output: None
+node_1 = Node("Riley", contact_1)
+print(node_1.key)  # Output: Riley
+print(node_1.value)  # Output: Riley: 123-456-7890
+print(node_1.next)  # Output: None
 
 '''Tests the Hashtable Methods'''
 '''Initializing the size of the hastable'''
@@ -119,22 +119,22 @@ table = HashTable(10)
 table.print_table()
 
 '''Inserts rebecca and john into hashmap'''
-table.insert("John", "908-876-1234")
+table.insert("John", "909-876-1234")
 table.insert("Rebecca", "111-555-0002")
 table.print_table()
 
 '''Search for John and his number'''
 contact = table.search("John")
-print("\n Search result:", contact)
+print("\nSearch result:", contact)
 
 '''Edge case of duplicate name different number dupe keys'''
-table.insert("Rebecca", "098-765-4321")
+table.insert("Rebecca", "999-444-9999")
 table.print_table()
 
 '''Edge case of searching for a nobody (Not in the table)'''
-print(table.search("Nobody")) #Should be None
+print(table.search("Chris")) #Should be None
 
 '''Edge case for Amy / May'''
 table.insert("Amy", "111-222-3333")
-table.insert("May", "222-333-4444")
+table.insert("May", "222-333-1111")
 table.print_table()
