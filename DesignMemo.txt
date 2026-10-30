@@ -4,4 +4,15 @@ Why is a hash table the right structure for fast lookups?
 How did you handle collisions?
 When might an engineer choose a hash table over a list or tree?
 
-My Answer - 
+My Answer - A hash table makes a good choice for the faster lookup becasuse it converts a key into an array which is how the print statements come out
+so the program uses the data where its needed instantly without needing to look through each item we scan the array created. The implementation I used had hash_function 
+add up the ord() value for the length of a contacts name and takes the total with the table size which comes out to being a time complexity of O(1) for the array creation search using hashmap
+while if an list is scanned one by one it will result in O(n) which doesnt scale well.
+
+I used seperate chains for each index it creates a collection of the Node objects that represent people inside the table/hash. So for collisions when it came to amy and May
+if a name is hashed to the same index as another person itll list the newer added person to the front of the same part of the array. This happens because ord gets the length of a str and the two 
+of them share the same length and letters inside the name place so they land in the same placement for the index. The other handling is if a name is exactly the same it doesnt add duplicates it updates number.
+
+When handling smaller peices of data like maybe a business that doesnt have as many products or a small team that uses the same resources repeatdly a stock system could be used
+for tracking parts without much need for inserting new node objects and the data doesnt neccesarily need to be organized as long as the values are true for essential parts. Hash maps are best
+for looking things up efficiently in systems.
