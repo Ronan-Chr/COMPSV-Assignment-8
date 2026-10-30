@@ -5,8 +5,15 @@ class Contact:
         name (str): The name of the contact.
         number (str): The phone number of the contact.
     '''
-    
-    pass # Delete this line when implementing the class
+
+    ''' initializes what Contact class will have being the name and number of the contact. '''
+    def __init__(self, name: str, number: str):
+        self.name = name
+        self.number = number
+
+    ''' This method returns a string representation of the contact in the format "name: number". '''
+    def __str__(self) -> str:
+        return f"{self.name}: {self.number}"
 
 class Node:
     '''
@@ -35,3 +42,8 @@ class HashTable:
     pass # Delete this line when implementing the class
 
 # Test your hash table implementation here.  
+''' Make sure to test the Contact class as well. I dont know what happened but the bottom view terminal in VS wasnt displaying the output of the print statements. I ended up restarting VS and without changing anything it started working and displaying the output of the print statements. I am not sure what happened but it is working now. '''
+contact1 = Contact("Riley", "123-456-7890")
+print(contact1)  # Output: Riley: 123-456-7890
+print(contact1.name)  # Output: Riley
+print(contact1.number)  # Output: 123-456-7890
