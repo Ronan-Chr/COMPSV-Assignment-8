@@ -24,7 +24,10 @@ class Node:
         next (Node): Pointer to the next node in case of a collision.
     '''
    
-    pass # Delete this line when implementing the class
+    def __init__(self, key: str, value: Contact):
+        self.key = key
+        self.value = value
+        self.next = None
 
 class HashTable:
     '''
@@ -47,3 +50,8 @@ contact1 = Contact("Riley", "123-456-7890")
 print(contact1)  # Output: Riley: 123-456-7890
 print(contact1.name)  # Output: Riley
 print(contact1.number)  # Output: 123-456-7890
+
+''' Test the Node class prints'''
+node1 = Node("Riley", contact1)
+print(node1.key)  # Output: Riley
+print(node1.value)  # Output: Riley: 123-456-7890
